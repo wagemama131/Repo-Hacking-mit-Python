@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Was letzte Preis?{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+<script src="{{ url_for('static', filename='js/homepage.js') }}"></script>     {% endblock %}
+
+
+{% block content %}
+
+{% if not userID %}
+<!-- ========== Gast-Ansicht ========== -->
+<div class="text-center">
+    <h1 style="font-family:'Georgia',serif; color:#3e2c19;">Hey Gast, </h1>
+
+    <div class="my-4">
+        <img src="{{ url_for('static', filename='img/logo2.png') }}"
+             alt="Willkommensbild"
+             style="max-width: 50%; border:2px solid #d3c6a5; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.1);">
+    </div>
+
+    <div class="rule-box mx-auto" style="max-width:600px; text-align:left;">
+        <h4 style="font-family:'Georgia',serif;">Grundregeln unseres Marktes</h4>
+        <ul>
+            <li>Alles hat seinen Preis – auch wenn’s keiner zahlen will.</li>
+            <li>Wenn du’s nicht beschreiben kannst, solltest du’s nicht verkaufen.</li>
+            <li>Wer ghostet, wird verflucht – digital natürlich.</li>
+            <li>Keine Tiere, keine Menschen, keine Zeitmaschinen.</li>
+            <li>Kaputt? Dann ist’s halt „antik“.</li>
+        </ul>
+
+        <div class="mt-4 text-center" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+            <a href="/pinboard" class="btn-old">Zur Verkaufswand</a>
+            <a href="/login" class="btn-old">Login</a>
+            <a href="/register" class="btn-old">Registrieren</a>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<!-- ========== Angemeldeter Benutzer ========== -->
+<h1 style="font-family:'Georgia',serif; color:#3e2c19;">Hey <span style="color:red;">{{ userID }},</span></h1>
+<p style="font-family:'Georgia',serif;"> Die Anzeigen sind online – und diesmal ganz ohne Strafmaß: </p>
+{% if articles %}
+<div class="article-list mt-4">
+    {% for article in articles %}
+    <div class="article-card">
+        <form action="/article/{{ article.article_ID }}">
+            <button type="submit" class="delete-btn" title="Artikel löschen">✖</button>
+        </form>
+
+        {% if article.image_url %}
+        <img src="{{ article.image_url }}" alt="Artikelbild">
+        {% else %}
+        <img src="../static/img/empty.jfif" alt="Kein Bild verfügbar">
+        {% endif %}
+
+        <div class="card-content" style="padding:0.75rem;">
+            <h5>{{ article.title }}</h5>
+            <hr>
+            <p class="price">{{ article.price }} €</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div id="empty-fallback" class="text-center mt-4" style="display:none;">
+    <img src="{{ url_for('static', filename='img/poster.jpg') }}"
+         alt="Keine Artikel mehr vorhanden"
+         style="max-width:75%; opacity:0.85;">
+    <p style="color:#5b4636; font-family:'Georgia',serif; margin-top: 2%;">Es geht immer noch was – zur Not verkaufen wir die Hoffnung gleich mit. </p>
+    <p><a href="/pinboard" class="btn-old">Neuen Artikel verkaufen</a></p>
+</div>
+{% else %}
+<div id="empty-fallback" class="text-center mt-4" style="display:block;">
+    <img src="{{ url_for('static', filename='img/poster.jpg') }}"
+         alt="Keine Artikel mehr vorhanden"
+         style="max-width:75%; opacity:0.85;">
+    <p style="color:#5b4636; font-family:'Georgia',serif; margin-top: 2%;">Es geht immer noch was – zur Not verkaufen wir die Hoffnung gleich mit. </p>
+    <p><a href="/pinboard" class="btn-old">Neuen Artikel verkaufen</a></p>
+</div>
+{% endif %}
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Pinnwand – Was letzte Preis?{% endblock %}
+
+{% block links %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pinboard.css') }}">
+<script src="../static/js/pinboard.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="pinboard-container">
+
+    <!-- ======= Artikelliste ======= -->
+    {% if articles %}
+    <div class="article-list">
+        {% for article in articles %}
+        <div class="article-card">
+            <img src="{{ article.image_url or url_for('static', filename='img/no_image.png') }}"
+                 alt="{{ article.title }}">
+            <div class="content">
+                <h3>{{ article.title }}</h3>
+                <hr>
+                <strong>Preis: </strong>{{ article.price }} €
+                <hr>
+                <strong>Verhandelbar:</strong> {{ mapping[article.negotiable] }}
+                <hr>
+                <strong>Zustand:</strong> {{ article.state or 'Unbekannt' }}
+                <hr>
+                <strong>Ort:</strong> {{ article.location }} ({{ article.postalcode }})
+                <hr>
+                <small>{{ article.description }}</small>
+                <hr>
+                <small>☎ {{ article.phone_number or 'Keine Angabe' }} / 📧{{ article.email}}</small><br>
+                <small>Erstellt am {{ article.created_at.strftime('%d.%m.%Y') }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <img src="{{ url_for('static', filename='img/error.png') }}" style="display: block; margin:auto;height:67.5%;width:67.5%;">
+    {% endif %}
+    <!-- ======= Artikel hinzufügen Zettel ======= -->
+
+    {% if userID %}
+    <div class="add-note" id="addNote">
+        <div class="add-note-toggle" id="toggleNote">⮜</div>
+        <h4>Artikel hinzufügen</h4>
+        <form>
+            <label for="title">Titel</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="price">Preis (€)</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <label for="location">Ort</label>
+            <input type="text" id="location" name="location" pattern="[A-Za-z]*" required>
+
+            <label for="postalcode">PLZ</label>
+            <input type="text" id="postalcode" name="postalcode" pattern="[0-9]*" required>
+
+            <label for="phone_number">Telefonnummer</label>
+            <input type="number" id="phone_number" name="phone_number" required>
+
+            <label for="description">Beschreibung</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="image">Bild</label>
+            <input type="file" id="image" name="image" required>
+
+            <label for="condition">Zustand</label>
+            <select id="condition" name="condition">
+                <option value="neu">Neu</option>
+                <option value="alt">Alt</option>
+                <option value="gebraucht" selected>Gebraucht</option>
+            </select>
+
+            <label for="negotiable">Verhandelbar</label>
+            <select id="negotiable" name="negotiable">
+                <option value="true" selected>Ja</option>
+                <option value="false">Nein</option>
+            </select>
+
+
+            <button type="submit">Speichern</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    document.getElementById("toggleNote").addEventListener("click", () => {
+        document.getElementById("addNote").classList.toggle("open");
+    });
+</script>
+
+{% endblock %}

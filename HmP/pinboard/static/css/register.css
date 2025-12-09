@@ -1,0 +1,61 @@
+
+.register-box {
+    background-color: #f2e9d0;
+    border: 1px solid #d3c6a5;
+    border-radius: 6px;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.register-box h2 {
+    font-family: 'Georgia', serif;
+    color: #3e2c19;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-family: 'Georgia', serif;
+    color: #3e2c19;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.form-control {
+    background-color: #fffef9;
+    border: 1px solid #d3c6a5;
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #bba97a;
+    box-shadow: 0 0 4px rgba(187, 169, 122, 0.4);
+}
+
+.btn-old {
+    background-color: #f2e9d0;
+    border: 1px solid #b9aa85;
+    color: #4c3b23;
+    font-weight: bold;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-old:hover {
+    background-color: #e6d8b9;
+    color: #2e2414;
+}
+
+.note {
+    font-size: 0.85rem;
+    color: #6b5a44;
+    text-align: center;
+    margin-top: 1rem;
+}

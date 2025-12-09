@@ -1,0 +1,144 @@
+/* Navbar, Body und Footer - anderes auf extra Stylesheets */
+
+body {
+    background-color: #f7f4eb;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
+    background-repeat: repeat;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Hintergrund-Füllung */
+.page-bg {
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.85) 60%, rgba(230, 225, 210, 0.9) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    /*width: 50vw;*/
+    padding: 2rem 0;
+    position: relative;
+}
+
+/* Dekorationsecken */
+.corner-img {
+    position: fixed;
+    width: 300px;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.corner-img:hover {
+    opacity: 0.4;
+}
+
+.corner-top-left {
+    top: 0;
+    left: 0;
+}
+
+.corner-top-right {
+    top: 0;
+    right: 0;
+    transform: scaleX(-1);
+}
+
+.corner-bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: scaleY(-1);
+}
+
+.corner-bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: scale(-1, -1);
+}
+
+.navbar {
+    background-color: #f2e9d0;
+    border-bottom: 1px solid #c1b69c;
+    position: relative;
+    z-index: 10;
+}
+
+.navbar-brand {
+    color: #5b4636 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Georgia', serif;
+}
+
+.navbar-brand:hover {
+    color: #d62417 !important;
+}
+
+.nav-link {
+    color: #5b4636 !important;
+    font-weight: 500;
+    margin-left: 2.5rem;
+}
+
+.nav-link:hover {
+    color: #d62417 !important;
+}
+
+main.container {
+    background-color: #fffef9;
+    border: 1px solid #e0d8c3;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 5;
+    width: 75vw;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    background-color: #f2e9d0;
+    border-top: 1px solid #c1b69c;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    color: #5b4636;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 10;
+}
+
+.social-icons a {
+    color: #5b4636;
+    margin: 0 10px;
+    font-size: 1.2em;
+}
+
+.social-icons a:hover {
+    color: #d62417;
+}
+
+h1, h2, h3 {
+    font-family: 'Georgia', serif;
+    color: #3e2c19;
+}
+
+small, .text-muted {
+    color: #7c6b52 !important;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .corner-img {
+        display: none;
+    }
+}

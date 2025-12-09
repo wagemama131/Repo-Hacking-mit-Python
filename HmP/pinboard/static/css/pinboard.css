@@ -1,0 +1,129 @@
+/* ========== Layout ========== */
+.pinboard-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* ========== Kartenstil ========== */
+.article-list {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.article-card {
+    background-color: #fffef8;
+    border: 1px solid #d6c8a3;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.article-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-bottom: 1px solid #d6c8a3;
+}
+
+.article-card .content {
+    padding: 0.75rem 1rem;
+}
+
+.article-card h5 {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    margin: 0.25rem 0;
+    color: #3d2a18;
+}
+
+.article-card hr {
+    border: 0;
+    border-top: 1px solid black;
+    margin: 0.25rem 0;
+}
+
+.article-card small {
+    color: #7c6b52;
+}
+
+/* ========== Zettel rechts ========== */
+.add-note {
+    background-color: #f2e9d0;
+    border: 1px solid #c1b69c;
+    border-radius: 6px 0 0 6px;
+    padding: 1rem;
+    width: 320px;
+    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 1rem;
+    transition: transform 0.4s ease;
+    transform: translateX(280px); /* Eingeklappt */
+}
+
+.add-note.open {
+    transform: translateX(0);
+}
+
+.add-note-toggle {
+    position: absolute;
+    left: -30px;
+    top: 1rem;
+    background-color: #d8cba6;
+    border: 1px solid #b7a47d;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+    padding: 0.3rem 0.4rem;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+}
+
+.add-note h4 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 1rem;
+    color: #3e2c19;
+    text-align: center;
+}
+
+.add-note form label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #3e2c19;
+}
+
+.add-note form input,
+.add-note form textarea {
+    width: 100%;
+    padding: 0.4rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #cbbd95;
+    border-radius: 4px;
+    background-color: #fffef9;
+}
+
+.add-note form button {
+    width: 100%;
+    background-color: #e6d8b9;
+    border: 1px solid #b9aa85;
+    color: #3e2c19;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-note form button:hover {
+    background-color: #d9c99d;
+}
+
+.add-note form select {
+    width: 100%;
+    padding: 0.4rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #cbbd95;
+    border-radius: 4px;
+    background-color: #fffef9;
+}

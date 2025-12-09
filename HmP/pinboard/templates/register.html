@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Schnell registrieren – Was letzte Preis?{% endblock %}
+
+{% block links %}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const parameterValue = urlParams.get('error');
+    if (parameterValue) {
+        alert("Folgender Fehler ist passiert: " + parameterValue)
+    }
+</script>
+{% endblock %}
+{% block content %}
+
+
+<div class="register-box">
+    <h2>Neues Konto erstellen</h2>
+
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-Mail-Adresse</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="seller_name" class="form-label">Verkäufername (Anzeigename)</label>
+            <input type="text" id="seller_name" name="seller_name" class="form-control" pattern="[A-Za-z0-9]*" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Passwort</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="confirm_password" class="form-label">Passwort wiederholen</label>
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn-old">Registrieren</button>
+        </div>
+    </form>
+
+    <p class="note">Schon dabei? <a href="/login" class="btn-old" style="padding:0.2rem 0.8rem;">Login</a></p>
+</div>
+
+{% endblock %}
