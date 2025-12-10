@@ -8,7 +8,7 @@ import bcrypt, re, os, string
 
 #password_salt = bcrypt.gensalt()
 mapper = {"true": 1, "false": 0}
-password_flag = Flag{Rekursive_Flag_Gefunden}
+google_api_key = Flag{Rekursive_Flag_Gefunden}
 
 def filter_special_chars(s:str, special_chars: str) -> bool:
     for char in s:
@@ -235,4 +235,5 @@ def add_article():
         "image_url": image_url,
         "created_at": "Gerade eben"
     })
+
 
